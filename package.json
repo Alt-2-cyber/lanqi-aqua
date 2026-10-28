@@ -1,0 +1,18 @@
+{
+  "name": "lanqi-aqua",
+  "version": "1.0.0",
+  "description": "澜启渔新智慧养殖 Web 管理端、原生鸿蒙 App 与共享设备 API",
+  "license": "Apache-2.0",
+  "private": true,
+  "type": "module",
+  "workspaces": ["apps/web", "services/api"],
+  "engines": { "node": ">=24.0.0" },
+  "scripts": {
+    "dev": "concurrently -k -n API,WEB -c cyan,green \"npm run dev -w @lanqi/api\" \"npm run dev -w @lanqi/web\"",
+    "build": "npm run build -w @lanqi/web && npm run build -w @lanqi/api",
+    "start": "npm run start -w @lanqi/api",
+    "test": "npm run test -w @lanqi/api && npm run test -w @lanqi/web",
+    "check": "npm run check -w @lanqi/web && npm run check -w @lanqi/api"
+  },
+  "devDependencies": { "concurrently": "^9.2.1", "typescript": "~5.9.3" }
+}

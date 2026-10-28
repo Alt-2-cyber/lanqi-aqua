@@ -1,0 +1,9 @@
+{
+  "modelVersion": "5.0.0",
+  "name": "lanqi-aqua",
+  "version": "1.0.0",
+  "description": "澜启渔新原生鸿蒙客户端",
+  "license": "Apache-2.0",
+  "dependencies": {},
+  "devDependencies": {}
+}
