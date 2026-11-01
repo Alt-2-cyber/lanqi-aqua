@@ -70,18 +70,14 @@ npm start
 ./apps/harmony/build-unsigned.ps1 -DevEcoHome 'D:/Program Files/Huawei/DevEco Studio'
 ```
 
-脚本使用新建的英文临时工作目录，避免 Hvigor 不支持中文工作区路径，构建输出到 `artifacts/lanqi-aqua-harmony-unsigned.hap`。详细说明见鸿蒙子目录 README。
 
-手机需要连接本机 API 时，在可信局域网中将 `.env` 的 `HOST` 改为 `0.0.0.0`，在手机登录页连接设置填写 `http://电脑局域网IP:4300`，电脑与手机在同一网络并允许本地防火墙 TCP4300。手机的 `127.0.0.1` 指手机自身。公开部署使用 HTTPS。
 
-**当前没有连接鸿蒙真机，编译通过不代表完成真机运行验证。**
 
 ## 真实设备接入
 
 将 `DEMO_MODE=false` 并设置管理员账号、至少12字符的密码和至少16字符的设备网关 token。首次启动真实模式数据库为空，与演示数据完全分开。真实模式关闭演示登录及模拟场景，使用自己的管理员凭据。
 
-先通过 `/api/ponds`、`/api/devices` 注册塘口与设备，随后网关使用独立 Bearer token 上报观测、发送心跳、领取待执行指令并回传执行结果。**真实模式不会模拟成功回执。** 指令30秒超时，超时不再下发，也不接受成功回执。
-
+先通过 `/api/ponds`、`/api/devices` 注册塘口与设备，随后网关使用独立 Bearer token 上报观测、发送心跳、领取待执行指令并回传执行结果。
 请阅读 [API契约](docs/API.md) 与 [网关接入说明](docs/GATEWAY.md)。生产部署应在反向代理后启用 HTTPS、`SECURE_COOKIES=true`，必要时配置 `WEB_ORIGINS`；默认不信任任意跨站访问。此原型不替代养殖专业判断、电气联锁或设备厂商的安全保护。
 
 ## 验证
